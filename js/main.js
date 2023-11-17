@@ -18,19 +18,19 @@
 
 
 // MARK UP HTML
- const images = ['01.jpg' , '02.jpg', '03.jpg' ,'04.jpg' , '05.jpg' ];
- const slider = document.querySelector('.slider');
- let currentSlide = 0;
- const prev = document.querySelector('.prev');
- const next = document.querySelector('.next');
+const images = ['01.jpg', '02.jpg', '03.jpg', '04.jpg', '05.jpg'];
+const slider = document.querySelector('.slider');
+let currentSlide = 0;
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
 
- for( let i = 0; i < images.length; i++){
+for (let i = 0; i < images.length; i++) {
 
     //slide
     const slide = document.createElement('div');
     slide.classList.add('slide');
 
-    if(i === currentSlide){
+    if (i === currentSlide) {
         slide.classList.add('active');
     }
 
@@ -42,31 +42,33 @@
     slide.append(img);
     slider.append(slide);
 
- }
+}
 
 const domSlides = document.querySelectorAll('.slide');
 
 //  SLIDER EVENTS
- prev.addEventListener('click', function(){
+prev.addEventListener('click', function () {
     console.log("Ho cliccato su prev");
 
-if(currentSlide > 0 ){
+    if (currentSlide > 0) {
 
-    domSlides[currentSlide].classList.remove('active');
-    currentSlide--;
-    domSlides[currentSlide].classList.add('active');
-}
- });
+        domSlides[currentSlide].classList.remove('active');
+        currentSlide--;
+        domSlides[currentSlide].classList.add('active');
+    }
+});
 
- next.addEventListener('click', function(){
-    console.log("Ho cliccato su next");
+setInterval(autoPLay, 2000);
 
-    if(currentSlide < domSlides.length - 1){
-
+function autoPLay() {
+    console.log("Partenza autoplay");
+    if (currentSlide < domSlides.length - 1) {
         domSlides[currentSlide].classList.remove('active');
         currentSlide++;
         domSlides[currentSlide].classList.add('active');
-        
     }
- });
+}
+
+
+
 
